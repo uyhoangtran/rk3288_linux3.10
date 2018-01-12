@@ -23,9 +23,9 @@
 		* other   ==> for other wifi;
 		*/
 		wifi_chip_type = "rtkwifi";
-		sdio_vref = <1800>; //1800mv or 3300mv
+		//sdio_vref = <1800>; //1800mv or 3300mv
 
-		keep_wifi_power_on;
+		//keep_wifi_power_on;
 		//power_ctrl_by_pmu;
 		//power_pmu_regulator = "act_ldo3";
 		//power_pmu_enable_level = <1>; //1->HIGH, 0->LOW
@@ -152,16 +152,17 @@
 		compatible = "rockchip,remotectl";
                 module-gpios = <&gpio7 GPIO_A5 GPIO_ACTIVE_LOW>;
         led-power = <&gpio8 GPIO_A1 GPIO_ACTIVE_LOW>;
-		status = "okay";
+		status = "disabled";
 	};
 	
 	firefly-led{
 		compatible = "firefly,led";
 		led-work = <&gpio8 GPIO_A2 GPIO_ACTIVE_LOW>;
 		led-power = <&gpio8 GPIO_A1 GPIO_ACTIVE_LOW>;
-		status = "okay";
+		status = "disabled";
 	};
   leds {
+	   status = "disabled";
        compatible = "gpio-leds";
        power {
            label = "firefly:blue:power";
@@ -479,7 +480,7 @@
 };
 
 &i2c1 {
-	status = "okay";
+	status = "disabled";
 	rtc@51 {
 		compatible = "nxp,pcf8563";
 		reg = <0x51>;
@@ -713,7 +714,7 @@
 &act8846 {
 	gpios =<&gpio7 GPIO_A1 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_A1 GPIO_ACTIVE_HIGH>;
 	cpu_det_gpio =<&gpio7 GPIO_B2 GPIO_ACTIVE_LOW>;
-	usb_hub_reset_gpio =<&gpio8 GPIO_A3 GPIO_ACTIVE_LOW>;
+	usb_hub_reset_gpio =<&gpio8 GPIO_A2 GPIO_ACTIVE_LOW>;
 	act8846,system-power-controller;
 
 	regulators {
